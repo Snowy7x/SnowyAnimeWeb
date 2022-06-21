@@ -8,8 +8,8 @@ export default function handler(
 ) {
     let url = decodeURIComponent(req.query.src);
     // encode url after last slash
-    const encodedUrl = url.substring(url.lastIndexOf("/") + 1);
-    url = url.replace(encodedUrl, encodeURIComponent(encodedUrl));
+    //const encodedUrl = url.substring(url.lastIndexOf("/") + 1);
+    //url = url.replace(encodedUrl, encodeURIComponent(encodedUrl));
     axios.get(url, {
         responseType: "arraybuffer",
         headers: {

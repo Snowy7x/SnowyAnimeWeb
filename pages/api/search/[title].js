@@ -13,7 +13,7 @@ export default function handler(
         if (lang === 'ar') {
             if (req.query.title !== undefined) {
                 // Scrap the anime info from the website
-                const url = sites.ar.witanime.searchInfo.url + encodeURIComponent( req.query.title);
+                const url = sites.ar.animelek.searchInfo.url + encodeURIComponent( req.query.title);
                 axios.get(url, {
                     headers: {
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
@@ -23,14 +23,14 @@ export default function handler(
                     const searchResults = [];
 
                     // Loop through the search results
-                    $(sites.ar.witanime.searchInfo.resultPath).each((i, el) => {
+                    $(sites.ar.animelek.searchInfo.resultPath).each((i, el) => {
                        searchResults.push(
                            {
-                               title: $(el).find(sites.ar.witanime.searchInfo.result.titlePath).text(),
-                               url: $(el).find(sites.ar.witanime.searchInfo.result.url).attr(sites.ar.witanime.searchInfo.result.urlAttr).replace(sites.ar.witanime.animeInfo.url, ""),
-                               img: $(el).find(sites.ar.witanime.searchInfo.result.imgPath).attr('src'),
-                               status: $(el).find(sites.ar.witanime.searchInfo.result.statusPath).text(),
-                               type: $(el).find(sites.ar.witanime.searchInfo.result.typePath).text(),
+                               title: $(el).find(sites.ar.animelek.searchInfo.result.titlePath).text(),
+                               url: $(el).find(sites.ar.animelek.searchInfo.result.url).attr(sites.ar.animelek.searchInfo.result.urlAttr).replace(sites.ar.animelek.animeInfo.url, ""),
+                               img: $(el).find(sites.ar.animelek.searchInfo.result.imgPath).attr('src'),
+                               status: $(el).find(sites.ar.animelek.searchInfo.result.statusPath).text(),
+                               type: $(el).find(sites.ar.animelek.searchInfo.result.seasonPath).text(),
 
                            }
                        )

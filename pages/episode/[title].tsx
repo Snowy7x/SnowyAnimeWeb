@@ -68,7 +68,7 @@ const Episode: NextPage = () => {
                 <div className={styles.top}>
                     <div className={styles.watchPanel}>
                         {/*@ts-ignore*/}
-                        <iframe src={info?.stream[currentServerIndex].url} frameBorder="0"></iframe>
+                        <iframe src={info?.stream[currentServerIndex].url} frameBorder="0" allowFullScreen={true} sandbox={"allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"}></iframe>
                         <div className={styles.watchPanel__links}>
                             {/*@ts-ignore*/}
                             {info?.stream.map((stream, index) => {
