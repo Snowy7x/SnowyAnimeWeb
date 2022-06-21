@@ -83,7 +83,9 @@ function Navbar({path, page = ""} : {path: string, page?: string}) : JSX.Element
                               }
                               }
                           />
-                          <a href="components/Navbar#" className={styles.search_btn} >
+                          <a onClick={() => {
+                             router.push(`/search/${search}`);
+                          }} className={styles.search_btn} >
                               <BiSearch className={styles.search_icon} />
                           </a>
                       </div>
