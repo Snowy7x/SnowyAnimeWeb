@@ -1,0 +1,236 @@
+.container{
+    padding: 1rem;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 150px;
+}
+
+.links_container{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 300px;
+
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(5px);
+    margin-top: 1rem;
+    box-shadow: #030303 20px 30px 50px 2px;
+    max-height: 800px;
+}
+
+.links_container_header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.links_container_header div{
+    padding: 1rem 2rem 1rem 1.5rem;
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 900;
+    transition: 0.2s ease-in-out;
+}
+
+.links_container_header .active{
+    background-color: #fff;
+    color: #000000;
+    font-weight: 900;
+}
+
+.links_container_header div:hover{
+    background-color: #fd4d4d;
+    color: #ffffff;
+}
+.links_container_body{
+    padding: 1rem 1.5rem;
+    width: 100%;
+    overflow-y: scroll;
+}
+.links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.links a {
+    width: 100%;
+    padding: 0.5rem 1.5rem;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+/* Adding bottom border */
+.links a::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    margin-top: 0.5rem;
+}
+
+.links a:hover{
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 900;
+    transform: scale(1.01);
+}
+
+.watchPanel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1300px;
+    padding: 2rem 4rem;
+
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(5px);
+    margin-top: 1rem;
+    box-shadow: #030303 20px 30px 50px 2px;
+    border-radius: 20px;
+}
+
+.watchPanel iframe{
+    width: 800px;
+    height: 500px;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+}
+
+.watchPanel__links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.activeServer{
+    background-color: #ff4949 !important;
+    color: white !important;
+}
+
+
+.watchPanel__link {
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 900;
+    transition: 0.2s ease-in-out;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 20px;
+    margin: 0.5rem 0.5rem;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 4rem;
+}
+
+.descPanel{
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 2rem 4rem;
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(5px);
+    margin-top: 1rem;
+    box-shadow: #030303 20px 30px 50px 2px;
+    border-radius: 20px;
+}
+
+.descPanel__header{
+    font-size: 25px;
+    font-weight: bold;
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+    box-shadow: #030303 0 0 50px 2px;
+    border-radius: 20px;
+    padding: 0 1rem;
+    margin: 1rem 0;
+}
+
+.descPanel p{
+    font-size: 1rem;
+    font-weight: 400;
+    color: #d2d2d2;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .watchPanel{
+        min-width: 100px;
+        width: 100%;
+    }
+    .watchPanel iframe{
+        width: 100%;
+        height: 100%;
+        min-height: 300px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .top{
+        flex-direction: column;
+    }
+
+    .links_container{
+        max-width: 100%;
+    }
+
+    .links{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .links a{
+        font-size: clamp(0.9rem, 0.5rem + 0.5vw, 1rem) !important;
+        width: fit-content;
+        padding: 0.2rem 0.5rem;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: 0.2s ease-in-out;
+        line-height: 1.5;
+        background-color: #ffffff;
+        color: #000000;
+        font-weight: 900;
+        margin: 0.2rem;
+    }
+
+    .links a:after {
+        margin: 0;
+    }
+
+
+
+}
+

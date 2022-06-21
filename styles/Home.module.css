@@ -1,116 +1,306 @@
-.container {
-  padding: 0 2rem;
+
+.hero h2 {
+    font-size: clamp(2.8rem, 2rem + 3vw, 4.8rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
 }
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.hero h4 {
+    padding: 0 200px;
+    text-align: center;
+    font-size: clamp(1.25rem, 1rem + 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.6;
+    word-break: break-word;
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
+.hero h4 span {
+    color: #da2329;
+    font-weight: 900;
+    text-decoration: underline;
+    border-radius: 100px;
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+.hero .btn {
+    margin: 6rem;
+    padding: 1rem 2rem;
+    background: hsla(252, 100%, 80%, 10%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    transition: background-color 300ms;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.hero .btn:focus,
+.hero .btn:hover {
+    background: white;
+    color: #222;
+    cursor: pointer;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+.hero {
+    display: grid;
+    height: 100vh;
+    /*   place-items: center; */
 }
 
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+.hero > * {
+    grid-area: 1 / -1;
 }
 
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
-}
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
+.hero__content {
+    display: flex;
     flex-direction: column;
-  }
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero__img {
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(255,255,255,0) 20%,
+    rgba(255,255,255,1)), url("../public/hero2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(0.5);
+    background-color: hsla(252, 100%, 40%, 50%);
+    background-blend-mode: multiply;
+    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0));
+}
+
+.section_header {
+    font-size: clamp(1rem, 2rem + 3vw, 1.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    background-color: rgba(30, 1, 9, 0.8);
+    color: white;
+    padding: 0.1rem 1rem;
+    width: fit-content;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    -moz-border-radius-topright: 30px;
+    -moz-border-radius-bottomright: 30px;
+    -webkit-border-top-right-radius: 30px;
+    -webkit-border-bottom-right-radius: 30px;
+
+    backdrop-filter: blur(10px);
+}
+
+.episodes_list{
+    border-radius: 50px;
+    padding: 2rem 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 90%;
+    margin: 0 auto 150px;
+}
+
+.episode_card{
+    background-blend-mode: multiply;
+    border-radius: 1rem;
+    margin: 1rem 1rem;
+    transition: 0.3s;
+    height: 300px;
+    width: 250px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.49);
+    z-index: 1;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.episode_card__info{
+    position: relative;
+    overflow: hidden;
+    top: -101%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 101%;
+    width: 100%;
+    z-index: 2;
+}
+.episode_card__img {
+    border-radius: 1.2rem;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    transition: 0.3s;
+    z-index: -1;
+}
+.episode_card:hover > .episode_card__img {
+    transform: scale(1.1);
+}
+.episode_card:hover{
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+.episode_card__header{
+    Display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.episode_card__header h3{
+    font-size: clamp(1.5rem, 1rem + 3vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.episode_card__header__tag{
+    font-size: clamp(0.8rem, 0.5rem + 3vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1.6;
+    word-break: break-word;
+    background-color: rgba(0, 0, 0, 0.74);
+    color: white;
+    padding: 0.5rem;
+}
+
+.episode_card__body{
+    height: fit-content;
+    width: 101%;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.78);
+    border-bottom-left-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;
+    -moz-border-radius-bottomleft: 0.6rem;
+    -moz-border-radius-bottomright: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+}
+
+.episode_card__body p{
+    font-size: clamp(1rem, 0.5rem + 3vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.6;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+}
+
+@media screen and (max-width: 1600px) {
+    .hero h2 {
+        font-size: clamp(2rem, 1rem + 3vw, 2.5rem);
+    }
+
+    .hero h4 {
+        font-size: clamp(1.0rem, 1rem + 3vw, 1.8rem);
+    }
+
+    .hero__content {
+        font-size: clamp(1rem, 2rem + 3vw, 1.5rem);
+    }
+
+    .section_header {
+        font-size: clamp(1rem, 2rem + 3vw, 1.3rem);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .hero h4{
+        padding: 0.5rem 1rem;
+    }
+
+    .hero .btn{
+        padding: 0.5rem 1rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .hero__img{
+        background-position: right;
+    }
+    .hero h2 {
+        font-size: clamp(2rem, 1rem + 3vw, 2.5rem);
+    }
+
+    .hero h4 {
+        font-size: clamp(1.0rem, 1rem + 3vw, 1.8rem);
+    }
+
+    .hero .btn{
+        font-size: clamp(1rem, 2rem + 3vw, 1.3rem);
+    }
+
+    .hero__content {
+        font-size: clamp(1rem, 2rem + 3vw, 1.5rem);
+    }
+
+    .section_header {
+        font-size: clamp(1rem, 2rem + 3vw, 1.3rem);
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .episodes_list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .section_header{
+        font-size: clamp(0.5rem, 2rem + 3vw, 1.0rem);
+    }
+
+    .episode_card{
+        height: 150px;
+        width: 45%;
+        margin: 0.5rem 0.5rem;
+    }
+
+    .episode_card__info{
+        top: -100%;
+    }
+
+    .episode_card__header__tag{
+        padding: 0.3rem;
+        font-size: clamp(1rem, 1rem + 3vw, 1.0rem) !important;
+    }
+
+    .episode_card__header h3{
+        font-size: clamp(1.5rem, 1rem + 3vw, 2.5rem);
+    }
+
+    .episode_card__body{
+        padding: 0.5rem;
+    }
+
+    .episode_card__body p{
+        font-size: clamp(0.5rem, 1rem + 3vw, 1rem) !important;
+    }
 }
