@@ -229,8 +229,36 @@
     .links a:after {
         margin: 0;
     }
+    .bottom {
+        padding: 2rem 0;
+        width: 100%;
+    }
 
+    .descPanel{
+        padding: 1rem 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    .watchPanel{
+        padding: 1rem 1rem;
+    }
 
+}
 
+@media screen and (max-width: 650px) {
+    .watchPanel__link{
+        font-size: clamp(0.9rem, 0.5rem + 0.5vw, 1rem) !important;
+        width: fit-content;
+        padding: 0.2rem 0.5rem;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: 0.2s ease-in-out;
+        line-height: 1.5;
+        background-color: #ffffff;
+        color: #000000;
+        font-weight: 900;
+        margin: 0.2rem;
+    }
 }
 

@@ -5,6 +5,7 @@
       "url": "https://animelek.me/",
       "isHref": false,
       "latest": {
+        "hasNum": true,
         "url": "https://animelek.me/episode/?page=",
         "path": ".episodes-card-container",
         "imgPath": "img",
@@ -59,6 +60,7 @@
       "url": "https://witanime.com/",
       "isHref": false,
       "latest": {
+        "hasNum": false,
         "url": "https://witanime.com/",
         "path": ".episodes-card-container",
         "imgPath": "img",
@@ -118,6 +120,28 @@
         "imgPath": "img",
         "typePath": ".anime-card-type a",
         "statusPath": ".anime-card-status a"
+      }
+    }
+  },
+  "en": {
+    "gogoanime.onl":{
+      "latest": {
+        "url": "https://gogoanime.onl",
+        "hasNum": false,
+        "path": ".last_episodes ul li",
+        "imgPath": "img",
+        "titlePath": ".name",
+        "animeUrlPath": ".name a",
+        "episodeNumPath": ".episode",
+        "episodeUrlPath": ".episode a"
+      },
+
+      "animeInfo": {
+        "url": "https://gogoanime.onl/anime/"
+      },
+
+      "episodeInfo": {
+        "url": "https://gogoanime.onl/episode/"
       }
     }
   }

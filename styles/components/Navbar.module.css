@@ -141,9 +141,9 @@
     width: 100vw;
     transition: 0.3s;
     background-color: #030303;
-    top: 0;
+    top: 100%;
     left: -100%;
-    transform: translate(0%, -100%);
+    transform: translate(-100%, -100%);
 }
 
 .mobile_menu .logo{
@@ -209,6 +209,7 @@
 
 .active_menu {
     left: 0;
+    top: 0;
     transform: translate(0%, 0%);
 }
 

@@ -49,7 +49,7 @@ function Navbar({path, page = ""} : {path: string, page?: string}) : JSX.Element
                           }
                           }
                       />
-                      <a href="components/Navbar#" className={styles.search_btn} >
+                      <a className={styles.search_btn} >
                           <BiSearch className={styles.search_icon} />
                       </a>
                   </div>
@@ -85,8 +85,12 @@ function Navbar({path, page = ""} : {path: string, page?: string}) : JSX.Element
                           />
                           <a onClick={() => {
                              router.push(`/search/${search}`);
-                          }} className={styles.search_btn} >
-                              <BiSearch className={styles.search_icon} />
+                          }} className={styles.search_btn}
+                            href={""}>
+                              <BiSearch onClick={() => {
+                                  router.push(`/search/${search}`);
+                              }
+                              }  className={styles.search_icon} />
                           </a>
                       </div>
                   </div>

@@ -66,6 +66,7 @@
 
 .info_container h1{
     font-size: 2rem;
+    text-align: center;
     font-weight: bold;
     color: #000000;
     background-color: rgb(255, 255, 255);
@@ -73,6 +74,7 @@
     border-radius: 20px;
     padding: 0 1rem;
     margin: 1rem 0;
+    line-height: 1;
 }
 
 .info_container p{
