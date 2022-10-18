@@ -16,7 +16,7 @@ const Episode: NextPage = () => {
 
     const setCurrentServerIndex = (ind: any, id = null, i = null) => {
         if (id == null) id = info?.stream[ind].id;
-        if (i == null) id = info?.stream[ind].i;
+        if (i == null) i = info?.stream[ind].i;
         setCurrentServerIndex_(ind)
         setCurrentServerLink("")
         axios.get(`/api/stream?id=${id}&i=${i}`).then(re => {
