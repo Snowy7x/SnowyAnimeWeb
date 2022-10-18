@@ -14,10 +14,12 @@ const Episode: NextPage = () => {
     const [currentServerIndex, setCurrentServerIndex_] = useState(0);
     const [currentServerLink, setCurrentServerLink] = useState("");
 
-    const setCurrentServerIndex = (ind: any) => {
+    const setCurrentServerIndex = (ind: any, id = null, i = null) => {
+        if (id == null) id = info?.stream[ind].id;
+        if (i == null) id = info?.stream[ind].i;
         setCurrentServerIndex_(ind)
         setCurrentServerLink("")
-        axios.get(`/api/stream?id=${info?.stream[ind].id}&i=${info?.stream[ind].i}`).then(re => {
+        axios.get(`/api/stream?id=${id}&i=${i}`).then(re => {
                 setCurrentServerLink(re.data.link)
             }
         ).catch()
@@ -50,8 +52,7 @@ const Episode: NextPage = () => {
         let title = window.location.pathname.split('/')[2];
         if (title) {
             getEpisodeDetails(title).then((r) => {
-                console.log("info:", r);
-                setCurrentServerIndex(0)
+                setCurrentServerIndex(0, r.stream[0].id, r.stream[0].i)
             });
         }
     }, []);
