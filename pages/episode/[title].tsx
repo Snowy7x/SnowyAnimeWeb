@@ -5,15 +5,23 @@ import styles from '../../styles/Episode.module.css'
 import {Navbar} from '../../components'
 import {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
-import FormData from "form-data";
 import axios from "axios";
 
 const Episode: NextPage = () => {
     const [info, setAnimeInfo] = useState<any[any] | undefined | null>(null);
     const [episodes, setEpisodes] = useState<any[] | undefined | null>(null);
     const router = useRouter();
-    const [currentServerIndex, setCurrentServerIndex] = useState(0);
+    const [currentServerIndex, setCurrentServerIndex_] = useState(0);
     const [currentServerLink, setCurrentServerLink] = useState("");
+
+    const setCurrentServerIndex = (ind: any) => {
+        setCurrentServerIndex_(ind)
+        setCurrentServerLink("")
+        axios.get(`/api/stream?id=${info?.stream[ind].id}&i=${info?.stream[ind].i}`).then(re => {
+                setCurrentServerLink(re.data.link)
+            }
+        ).catch()
+    }
 
     const getEpisodeDetails = async (title: string) => {
         const res = await fetch(`/api/episode/${title}?site=ar`);
@@ -43,37 +51,10 @@ const Episode: NextPage = () => {
         if (title) {
             getEpisodeDetails(title).then((r) => {
                 console.log("info:", r);
+                setCurrentServerIndex(0)
             });
         }
     }, []);
-
-    useEffect(() => {
-        // Load next server:
-        function getStreamLink(i: string, id: string){
-            let data = new FormData();
-            data.append('id', id);
-            data.append('i', i);
-
-            console.log("getting => id:" + id + ", i: " + i)
-            const config = {
-                method: 'post',
-                url: 'https://v.xsanime.com/wp-content/themes/Elshaikh/Inc/Ajax/Single/Server.php',
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-                data : data
-            };
-            axios(config)
-                .then(function (response) {
-                    setCurrentServerLink(response.data.split('\"')[1])
-                })
-                .catch(function (error) {
-                    //console.log(error.message);
-                });
-        }
-        getStreamLink(info?.stream[currentServerIndex].i, info?.stream[currentServerIndex].id)
-    }, [currentServerIndex, info?.stream])
-
 
     return (
         <>

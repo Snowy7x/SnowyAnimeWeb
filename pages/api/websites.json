@@ -168,22 +168,22 @@
         "downloadUrlPath": "a",
         "downloadAttr": "href",
         "replaces": ["XSAnime", "انمي ليك", "مترجمة اون لاين -", ""],
-        "nextAttr": "rel",
-        "nextUrlPath": ".navigation-episodes a",
+        "nextAttr": "class",
+        "nextUrlPath": ".episodes--buttons a",
         "nextUrlAttr": "href",
         "nextAttrValue": "next",
         "prevAttrValue": "prev"
       },
       "searchInfo": {
-        "url": "https://animelek.me/search/?s=",
-        "resultPath": ".anime-card-container",
+        "url": "https://v.xsanime.com/?s=",
+        "resultPath": ".itemtype_anime",
         "result": {
           "url": "a",
           "urlAttr": "href",
-          "titlePath": "h3 a",
-          "imgPath": "img",
-          "seasonPath": "h4 a",
-          "statusPath": ".anime-card-status a"
+          "titlePath": "h4",
+          "imgPath": "a .itemtype_anime_poster img",
+          "seasonPath": "em",
+          "statusPath": "em"
         }
       }
     }

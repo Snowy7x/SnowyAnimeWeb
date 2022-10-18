@@ -8,29 +8,6 @@ export default function handler(
     req,
     res
 ) {
-    async function getStreamLink(i, id){
-        const FormData = require('form-data');
-        let data = new FormData();
-        data.append('id', id);
-        data.append('i', i);
-
-        console.log("getting => id:" + id + ", i: " + i)
-        const config = {
-            method: 'post',
-            url: 'https://v.xsanime.com/wp-content/themes/Elshaikh/Inc/Ajax/Single/Server.php',
-            headers: {
-                ...data.getHeaders()
-            },
-            data : data
-        };
-        return await axios(config)
-            .then(function (response) {
-                return response.data
-            })
-            .catch(function (error) {
-                //console.log(error.message);
-            });
-    }
     if (req.method === 'GET') {
         const lang = req.query.lang || "ar";
         if (lang === 'ar') {
@@ -58,7 +35,7 @@ export default function handler(
                         animeInfo.stream.push({
                             name: $(el).find(sites.ar.xsanime.episodeInfo.streamNamePath).text(),
                             i: $(el).attr("data-i"),
-                            id: $(el).attr("data-id")
+                            id: $(el).attr("data-id"),
                         });
                     }
 
