@@ -8,49 +8,82 @@ export default function handler(
     req,
     res
 ) {
+    async function getStreamLink(i, id){
+        const FormData = require('form-data');
+        let data = new FormData();
+        data.append('id', id);
+        data.append('i', i);
+
+        console.log("getting => id:" + id + ", i: " + i)
+        const config = {
+            method: 'post',
+            url: 'https://v.xsanime.com/wp-content/themes/Elshaikh/Inc/Ajax/Single/Server.php',
+            headers: {
+                ...data.getHeaders()
+            },
+            data : data
+        };
+        return await axios(config)
+            .then(function (response) {
+                return response.data
+            })
+            .catch(function (error) {
+                //console.log(error.message);
+            });
+    }
     if (req.method === 'GET') {
         const lang = req.query.lang || "ar";
         if (lang === 'ar') {
             if (req.query.title !== undefined) {
                 // Scrap the anime info from the website
-                const url = sites.ar.animelek.episodeInfo.url + encodeURIComponent( req.query.title);
-                console.log(url);
+                const url = sites.ar.xsanime.episodeInfo.url + encodeURIComponent( req.query.title);
                 axios.get(url, {
                     headers: {
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
                     }
-                }).then(response => {
+                }).then(async response => {
                     const $ = cheerio.load(response.data);
                     const animeInfo = {
-                        title: $(sites.ar.animelek.animeInfo.titlePath).text().replaceAll(new RegExp(sites.ar.animelek.episodeInfo.replaces.join("|"), "g"), ""),
-                        description: $(sites.ar.animelek.animeInfo.descriptionPath).text().replaceAll(new RegExp(sites.ar.animelek.episodeInfo.replaces.join("|"), "g"), ""),
+                        title: $(sites.ar.xsanime.episodeInfo.title).text().replaceAll(new RegExp(sites.ar.xsanime.episodeInfo.replaces.join("|"), "g"), ""),
                         stream: [],
-                        download: []
+                        download: [],
+                        episodes: [],
+                        next: null,
+                        prev: null
                     };
 
+
                     // Get the anime stream links
-                    $(sites.ar.animelek.episodeInfo.streamPath).each((i, el) => {
-                        const name = $(el).find(sites.ar.animelek.episodeInfo.streamNamePath).text();
-                        if (name.includes("sbfull")) {
-                            return;
-                        }
+                    for (let el of $(sites.ar.xsanime.episodeInfo.streamPath)) {
                         animeInfo.stream.push({
-                            name: $(el).find(sites.ar.animelek.episodeInfo.streamNamePath).text(),
-                            url: $(el).find(sites.ar.animelek.episodeInfo.streamUrlPath).attr(sites.ar.animelek.episodeInfo.streamAttr)
+                            name: $(el).find(sites.ar.xsanime.episodeInfo.streamNamePath).text(),
+                            i: $(el).attr("data-i"),
+                            id: $(el).attr("data-id")
                         });
-                    })
+                    }
 
                     // Get the anime download links
-                    $(sites.ar.animelek.episodeInfo.downloadPath).each((i, el) => {
-                        const name = $(el).find(sites.ar.animelek.episodeInfo.downloadNamePath).text();
+                    $(sites.ar.xsanime.episodeInfo.downloadPath).each((i, el) => {
+                        const name = $(el).find(sites.ar.xsanime.episodeInfo.downloadNamePath).text();
                         if (name === "") {
                             return;
                         }
                         animeInfo.download.push({
                             name: name,
-                            url: $(el).find(sites.ar.animelek.episodeInfo.downloadUrlPath).attr(sites.ar.animelek.episodeInfo.downloadAttr)
+                            url: $(el).attr(sites.ar.xsanime.episodeInfo.downloadAttr)
                         });
                     });
+
+                    // Get next episode if there, and last:
+                    $(sites.ar.xsanime.episodeInfo.nextUrlPath).each((i, el) => {
+                        const name = $(el).attr(sites.ar.xsanime.episodeInfo.nextAttr)
+                        const link = $(el).attr(sites.ar.xsanime.episodeInfo.nextUrlAttr)
+                        if (name === sites.ar.xsanime.episodeInfo.nextAttrValue) {
+                            animeInfo.next = link.replace(sites.ar.xsanime.episodeInfo.url, "");
+                        } else if (name === sites.ar.xsanime.episodeInfo.prevAttrValue) {
+                            animeInfo.prev = link.replace(sites.ar.xsanime.episodeInfo.url, "");
+                        }
+                    })
 
 
                     res.statusCode = 200;
@@ -59,6 +92,7 @@ export default function handler(
                 }).catch(error => {
                     res.statusCode = 500;
                     res.setHeader('Content-Type', 'application/json');
+                    console.log(error)
                     res.end(JSON.stringify({
                         error: error.message,
                         url: url

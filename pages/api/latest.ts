@@ -12,7 +12,7 @@ export default function handler(
   res: NextApiResponse
 ) {
     const lang = req.query.lang || "ar";
-    const site = (lang == "en") ? websites.en["gogoanime.onl"] : websites.ar.animelek;
+    const site = (lang == "en") ? websites.en["gogoanime.onl"] : websites.ar.xsanime;
     const url = site.latest.url || "";
     if (!url) {
         res.status(400).json({

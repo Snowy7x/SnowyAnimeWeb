@@ -40,7 +40,12 @@
         "downloadNamePath": "a",
         "downloadUrlPath": "a",
         "downloadAttr": "href",
-        "replaces": ["AnimeLek", "انمي ليك"]
+        "replaces": ["AnimeLek", "انمي ليك", "مترجمة اون لاين -", ""],
+        "nextAttr": "rel",
+        "nextUrlPath": ".navigation-episodes a",
+        "nextUrlAttr": "href",
+        "nextAttrValue": "next",
+        "prevAttrValue": "prev"
       },
       "searchInfo": {
         "url": "https://animelek.me/search/?s=",
@@ -120,6 +125,66 @@
         "imgPath": "img",
         "typePath": ".anime-card-type a",
         "statusPath": ".anime-card-status a"
+      }
+    },
+    "xsanime": {
+      "name": "XSAnime",
+      "url": "https://v.xsanime.com/",
+      "isHref": false,
+      "latest": {
+        "hasNum": true,
+        "url": "https://v.xsanime.com/episodes?",
+        "path": ".itemtype_episode",
+        "imgPath": "img",
+        "titlePath": ".itemtype_episode_name",
+        "animeUrlPath": "a",
+        "episodeNumPath": ".itemtype_number",
+        "episodeUrlPath": "a"
+      },
+      "animeInfo": {
+        "url": "https://v.xsanime.com/anime/",
+        "coverPath": ".post--singles .poster--inner .inner--image img",
+        "titlePath": ".post--singles .post--metas .post--inner-title",
+        "descriptionPath": ".post--singles .post--metas .post--content--inner",
+        "episodesPath": ".EpisodesList a",
+        "genrePath": ".post--singles .post--metas .terms--and--metas li:nth-child(1) a",
+        "ep_numPath": "em",
+        "ep_imgPath": ".post--singles .poster--inner .inner--image img",
+        "ep_urlAttr": "href",
+        "statsPath": ".post--singles .post--metas .terms--and--metas li",
+        "statsNamePath": "span",
+        "statsValuePath": "a",
+        "statsCount": 4
+      },
+      "episodeInfo": {
+        "title": ".episode--head .anime--title h1",
+        "url": "https://v.xsanime.com/episode/",
+        "streamPath": ".watch--servers--list li",
+        "streamNamePath": "span",
+        "streamUrlPath": "a",
+        "streamAttr": "data-ep-url",
+        "downloadPath": ".downloads .download--item",
+        "downloadNamePath": ".txt span",
+        "downloadUrlPath": "a",
+        "downloadAttr": "href",
+        "replaces": ["XSAnime", "انمي ليك", "مترجمة اون لاين -", ""],
+        "nextAttr": "rel",
+        "nextUrlPath": ".navigation-episodes a",
+        "nextUrlAttr": "href",
+        "nextAttrValue": "next",
+        "prevAttrValue": "prev"
+      },
+      "searchInfo": {
+        "url": "https://animelek.me/search/?s=",
+        "resultPath": ".anime-card-container",
+        "result": {
+          "url": "a",
+          "urlAttr": "href",
+          "titlePath": "h3 a",
+          "imgPath": "img",
+          "seasonPath": "h4 a",
+          "statusPath": ".anime-card-status a"
+        }
       }
     }
   },
