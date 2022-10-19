@@ -20,11 +20,13 @@ export default function handler(
                     }
                 }).then(async response => {
                     const $ = cheerio.load(response.data);
+                    const title = $(sites.ar.xsanime.episodeInfo.title).text().replaceAll(new RegExp(sites.ar.xsanime.episodeInfo.replaces.join("|"), "g"), "");
                     const animeInfo = {
-                        title: $(sites.ar.xsanime.episodeInfo.title).text().replaceAll(new RegExp(sites.ar.xsanime.episodeInfo.replaces.join("|"), "g"), ""),
+                        title: title,
                         stream: [],
                         download: [],
                         episodes: [],
+                        num: title.split(" ")[title.split(" ").length - 1],
                         next: null,
                         prev: null
                     };
