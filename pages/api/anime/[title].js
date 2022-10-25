@@ -52,6 +52,8 @@ export default function handler(
                         });
                     });
 
+                    animeInfo.episodes = animeInfo.episodes.reverse()
+
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
                     res.end(JSON.stringify(animeInfo));
