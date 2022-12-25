@@ -61,7 +61,8 @@ const Episode: NextPage = () => {
         <>
             <Head>
                 {/* @ts-ignore */}
-                <title> {info && info.title} | SnowyAnime</title>
+                <title> {info && info.title} | Snowy
+                    Anime</title>
                 <meta name="description" content="Made by snowy to prove them wrong :)"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>

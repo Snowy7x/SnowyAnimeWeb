@@ -26,8 +26,8 @@ export default function handler(
                     $(sites.ar.xsanime.searchInfo.resultPath).each((i, el) => {
                        searchResults.push(
                            {
-                               title: $(el).find(sites.ar.xsanime.searchInfo.result.titlePath).text(),
-                               url: $(el).find(sites.ar.xsanime.searchInfo.result.url).attr(sites.ar.xsanime.searchInfo.result.urlAttr).replace(sites.ar.xsanime.animeInfo.url, ""),
+                               title: $(el).find(sites.ar.xsanime.searchInfo.result.titlePath).text().replaceAll("xs anime", "snowyanime"),
+                               url: $(el).find(sites.ar.xsanime.searchInfo.result.url).attr(sites.ar.xsanime.searchInfo.result.urlAttr).replace(sites.ar.xsanime.url, ""),
                                img: $(el).find(sites.ar.xsanime.searchInfo.result.imgPath).attr('data-src'),
                                status: $(el).find(sites.ar.xsanime.searchInfo.result.statusPath).first().text(),
                                type: $(el).find(sites.ar.xsanime.searchInfo.result.seasonPath).last().text(),
