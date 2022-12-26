@@ -25,7 +25,8 @@ export default function handler(
                         description: $(sites.ar.xsanime.animeInfo.descriptionPath).text(),
                         stats: [],
                         genres: [],
-                        episodes: []
+                        stream: [],
+                        download: []
                     };
                     // Get the anime stats
                     $(sites.ar.xsanime.animeInfo.statsPath).slice(1, sites.ar.xsanime.animeInfo.statsCount).each((i, el) => {
@@ -38,22 +39,28 @@ export default function handler(
                         animeInfo.genres.push($(el).text());
                     });
                     // Scrap the episodes info from the website
-                    let img;
-                    $(sites.ar.xsanime.animeInfo.episodesPath).each((i, el) => {
-                        if (i === 0) {
-                            img = animeInfo.img
+
+                    // Get the anime stream links
+                    for (let el of $(sites.ar.xsanime.episodeInfo.streamPath)) {
+                        animeInfo.stream.push({
+                            name: $(el).find(sites.ar.xsanime.episodeInfo.streamNamePath).text(),
+                            i: $(el).attr("data-i"),
+                            id: $(el).attr("data-id"),
+                        });
+                    }
+
+                    // Get the anime download links
+                    $(sites.ar.xsanime.episodeInfo.downloadPath).each((i, el) => {
+                        const name = $(el).find(sites.ar.xsanime.episodeInfo.downloadNamePath).text();
+                        if (name === "") {
+                            return;
                         }
-                        const episodeNumber = $(el).find(sites.ar.xsanime.animeInfo.ep_numPath).text().replace( /^\D+/g, '')
-                        const episodeUrl = $(el).attr(sites.ar.xsanime.animeInfo.ep_urlAttr).replace(sites.ar.xsanime.episodeInfo.url, "");
-                        animeInfo.episodes.push({
-                            img,
-                            episodeNumber,
-                            episodeUrl
+                        animeInfo.download.push({
+                            name: name,
+                            url: $(el).attr(sites.ar.xsanime.episodeInfo.downloadAttr)
                         });
                     });
-
-                    animeInfo.episodes = animeInfo.episodes.reverse()
-
+                    
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
                     res.end(JSON.stringify(animeInfo));

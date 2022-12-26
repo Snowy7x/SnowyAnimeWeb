@@ -143,6 +143,7 @@
       },
       "animeInfo": {
         "url": "https://v.xsanime.com/anime/",
+        "murl": "https://v.xsanime.com/movie/",
         "coverPath": ".post--singles .poster--inner .inner--image img",
         "titlePath": ".post--singles .post--metas .post--inner-title",
         "descriptionPath": ".post--singles .post--metas .post--content--inner",

@@ -57,7 +57,7 @@ const Home: NextPage = () => {
                             <div className={styles.episode_card} key={index}>
                                 <div className={styles.episode_card__img}  style={{backgroundImage: `url("/api/image/${encodeURIComponent(anime.img)}")`}}/>
                                 <div onClick={() => {
-                                    window.location.href = '/episode/' + anime.episodeUrl;
+                                    window.location.href = (anime.isMovie ? '/movie/' : "/episode/") + anime.episodeUrl;
                                 }} className={styles.episode_card__info}>
                                     <div className={styles.episode_card__header}>
                                         <div className={styles.episode_card__header__tag}>
@@ -66,7 +66,7 @@ const Home: NextPage = () => {
                                     </div>
                                     <div onClick={(e) => {
                                         e.stopPropagation()
-                                        window.location.href = '/' + anime.animeUrl;
+                                        window.location.href = (anime.isMovie ? '/movie/' : "/episode/") + anime.animeUrl;
                                     }} className={styles.episode_card__body}>
                                         <p>{anime.title}</p>
                                     </div>

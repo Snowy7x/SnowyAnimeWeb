@@ -37,18 +37,22 @@ export default function handler(
             animeCards.each((i, el) => {
                 const title = $(el).find(site.latest.titlePath).text();
                 const img = $(el).find(site.latest.imgPath).attr("src");
-                const episodeNumber = $(el).find(site.latest.episodeNumPath).text().replace( /^\D+/g, '')
+                const episodeNumber = $(el).find(site.latest.episodeNumPath).text().replace( /^\D+/g, '');
+
+                const url = $(el).find(site.latest.episodeUrlPath).attr("href");
                 //@ts-ignore
-                const animeUrl = $(el).find(site.latest.episodeUrlPath).attr("href")?.replace(site.animeInfo.url, "");
+                const animeUrl = url?.replace(site.episodeInfo.url, "").replace(site.animeInfo.murl);
                 //@ts-ignore
-                const episodeUrl = $(el).find(site.latest.episodeUrlPath).attr("href")?.replace(site.animeInfo.url, "");
+                const episodeUrl = url?.replace(site.episodeInfo.url, "").replace(site.animeInfo.murl);
+
+                const isMovie = url?.includes("movie")
 
                 episodes.push({
                     title,
                     img,
                     episodeNumber,
                     animeUrl,
-                    episodeUrl
+                    episodeUrl,
                 });
             });
             res.json(episodes);

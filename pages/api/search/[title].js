@@ -24,14 +24,15 @@ export default function handler(
 
                     // Loop through the search results
                     $(sites.ar.xsanime.searchInfo.resultPath).each((i, el) => {
+                        let url = $(el).find(sites.ar.xsanime.searchInfo.result.url).attr(sites.ar.xsanime.searchInfo.result.urlAttr);
                        searchResults.push(
                            {
                                title: $(el).find(sites.ar.xsanime.searchInfo.result.titlePath).text().replaceAll("xs anime", "snowyanime"),
-                               url: $(el).find(sites.ar.xsanime.searchInfo.result.url).attr(sites.ar.xsanime.searchInfo.result.urlAttr).replace(sites.ar.xsanime.url, ""),
+                               url: url.replace(sites.ar.xsanime.animeInfo.murl, "").replace(sites.ar.xsanime.animeInfo.url, ""),
                                img: $(el).find(sites.ar.xsanime.searchInfo.result.imgPath).attr('data-src'),
                                status: $(el).find(sites.ar.xsanime.searchInfo.result.statusPath).first().text(),
                                type: $(el).find(sites.ar.xsanime.searchInfo.result.seasonPath).last().text(),
-
+                               isMovie: url.includes("movie")
                            }
                        )
                     });
