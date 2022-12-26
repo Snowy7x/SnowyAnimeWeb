@@ -39,9 +39,9 @@ export default function handler(
                 const img = $(el).find(site.latest.imgPath).attr("src");
                 const episodeNumber = $(el).find(site.latest.episodeNumPath).text().replace( /^\D+/g, '')
                 //@ts-ignore
-                const animeUrl = $(el).find(site.latest.episodeUrlPath).attr("href")?.replace(site.url, "");
+                const animeUrl = $(el).find(site.latest.episodeUrlPath).attr("href")?.replace(site.animeInfo.url, "");
                 //@ts-ignore
-                const episodeUrl = $(el).find(site.latest.episodeUrlPath).attr("href")?.replace(site.url, "");
+                const episodeUrl = $(el).find(site.latest.episodeUrlPath).attr("href")?.replace(site.animeInfo.url, "");
 
                 episodes.push({
                     title,
