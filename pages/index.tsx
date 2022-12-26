@@ -66,7 +66,7 @@ const Home: NextPage = () => {
                                     </div>
                                     <div onClick={(e) => {
                                         e.stopPropagation()
-                                        window.location.href = '/anime/' + anime.animeUrl;
+                                        window.location.href = '/' + anime.animeUrl;
                                     }} className={styles.episode_card__body}>
                                         <p>{anime.title}</p>
                                     </div>

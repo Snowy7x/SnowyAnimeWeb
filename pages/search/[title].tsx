@@ -70,7 +70,7 @@ const SearchArgs: NextPage = () => {
                             <div className={styles.anime_card} key={index}>
                                 <div className={styles.anime_card__img}  style={{backgroundImage: `url("/api/image/${encodeURIComponent(anime.img)}")`}}/>
                                 <div onClick={() => {
-                                    window.location.href = '/anime/' + anime.url;
+                                    window.location.href = '/' + anime.url;
                                 }} className={styles.anime_card__info}>
                                     <div className={styles.anime_card__header}>
                                         <div className={styles.anime_card__header__tag}>
@@ -80,7 +80,7 @@ const SearchArgs: NextPage = () => {
                                     </div>
                                     <div onClick={(e) => {
                                         e.stopPropagation()
-                                        window.location.href = '/anime/' + anime.url;
+                                        window.location.href = '/' + anime.url;
                                     }} className={styles.anime_card__body}>
                                         <p>{anime.title}</p>
                                     </div>
