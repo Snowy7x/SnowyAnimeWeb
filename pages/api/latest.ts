@@ -53,6 +53,7 @@ export default function handler(
                     episodeNumber,
                     animeUrl,
                     episodeUrl,
+                    isMovie
                 });
             });
             res.json(episodes);
