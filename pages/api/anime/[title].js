@@ -13,7 +13,7 @@ export default function handler(
         if (lang === 'ar') {
             if (req.query.title !== undefined) {
                 // Scrap the anime info from the website
-                axios.get(sites.ar.xsanime.url + req.query.title.replaceAll("--------------", "/"), {
+                axios.get(sites.ar.xsanime.animeInfo.url + req.query.title, {
                     headers: {
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
                     }

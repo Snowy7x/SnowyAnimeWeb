@@ -12,7 +12,7 @@ const Anime: NextPage = () => {
     const router = useRouter();
     const getAnimeData = async (title: string) => {
         title = encodeURIComponent(title);
-        const res = await fetch(`/api/anime/${title.replaceAll("/", "--------------")}?site=ar`);
+        const res = await fetch(`/api/anime/${title}?site=ar`);
         const data = await res.json();
         if (data.error) {
             window.location.href = "/";
