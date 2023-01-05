@@ -37,7 +37,7 @@ const SearchArgs = () => {
         }
         setLoading(true)
         const base64 = await convertBase64(file)
-        setImage64(base64)
+        //setImage64(base64)
         toast.info("One sec will do it...", {theme: "dark"})
         axios({
             method: 'post',
@@ -90,6 +90,9 @@ const SearchArgs = () => {
                 <a className={styles.btn} onClick={() => {
                     input.current.click();
                 }}>Choose an Image</a>
+                {image64 !== "" && (
+                    <a className={styles.btn} download="SnowyAnime_SelfieToAnime" href={image64}>Download</a>
+                    )}
             </section>
         </>
     )

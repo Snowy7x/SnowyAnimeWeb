@@ -26,7 +26,7 @@
 }
 
 .preview{
-    width: 300px;
+    width: 250px;
     border: 5px solid white;
     border-radius: 20px;
 }
@@ -41,6 +41,8 @@
     align-items: center;
     font-size: 24px;
     flex-direction: column;
+    text-align: center;
+    padding: 10px 10px;
 }
 
 .ldsEllipsis {
@@ -104,5 +106,6 @@
 @media screen and (max-width: 500px) {
     .btn{
         padding: 10px 10px;
+        margin: 10px 0;
     }
 }
