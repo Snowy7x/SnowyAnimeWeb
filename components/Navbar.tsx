@@ -28,6 +28,9 @@ function Navbar({path, page = ""} : {path: string, page?: string}) : JSX.Element
                   <Link href={`/seasonal`}>
                       <a  className={styles.nav_item + " " + (page == "seasonal" && styles.active)}>Seasonal Animes</a>
                   </Link>
+                  <Link href={`/selfietoanime`}>
+                      <a  className={styles.nav_item + " " + (page == "selfietoanime" && styles.active)}>Selfie to Anime</a>
+                  </Link>
                   {/*<a href="#" className={styles.nav_item}>Movies</a>*/}
               </div>
 
@@ -101,6 +104,9 @@ function Navbar({path, page = ""} : {path: string, page?: string}) : JSX.Element
                       {/*<a href="#" className={styles.mobile_nav_item}>Animes</a>*/}
                       <Link href={`/seasonal`}>
                           <a  className={styles.mobile_nav_item + " " + (page == "seasonal" && styles.active)}>Seasonal Animes</a>
+                      </Link>
+                      <Link href={`/selfietoanime`}>
+                          <a  className={styles.mobile_nav_item + " " + (page == "selfietoanime" && styles.active)}>Selfie to Anime</a>
                       </Link>
                       {/*<a href="#" className={styles.mobile_nav_item}>Movies</a>*/}
                   </div>

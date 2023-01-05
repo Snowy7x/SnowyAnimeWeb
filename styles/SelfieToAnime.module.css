@@ -1,0 +1,108 @@
+.container{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.btn {
+    margin: 6rem;
+    padding: 20px 15px;
+    background: hsla(252, 100%, 80%, 10%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    transition: background-color 300ms;
+    text-align: center;
+}
+
+.btn:focus,
+.btn:hover {
+    background: white;
+    color: #222;
+    cursor: pointer;
+}
+
+.preview{
+    width: 300px;
+    border: 5px solid white;
+    border-radius: 20px;
+}
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(38, 43, 44, 0.82);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    flex-direction: column;
+}
+
+.ldsEllipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    zoom: 2;
+}
+.ldsEllipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.ldsEllipsis div:nth-child(1) {
+    left: 8px;
+    animation: ldsEllipsis1 0.6s infinite;
+}
+.ldsEllipsis div:nth-child(2) {
+    left: 8px;
+    animation: ldsEllipsis2 0.6s infinite;
+}
+.ldsEllipsis div:nth-child(3) {
+    left: 32px;
+    animation: ldsEllipsis2 0.6s infinite;
+}
+.ldsEllipsis div:nth-child(4) {
+    left: 56px;
+    animation: ldsEllipsis3 0.6s infinite;
+}
+@keyframes ldsEllipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes ldsEllipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes ldsEllipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .btn{
+        padding: 10px 10px;
+    }
+}
