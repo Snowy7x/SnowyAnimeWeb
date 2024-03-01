@@ -14,6 +14,9 @@ const Episode: NextPage = () => {
     const [currentServerIndex, setCurrentServerIndex_] = useState(0);
     const [currentServerLink, setCurrentServerLink] = useState("");
 
+    const [tab, setTab] = useState(0);
+    const [tabs, setTabs] = useState<any[] | undefined | null>([])
+
     const setCurrentServerIndex = (ind: any, id = null, i = null) => {
         if (id == null) id = info?.stream[ind].id;
         if (i == null) i = info?.stream[ind].i;
@@ -32,7 +35,41 @@ const Episode: NextPage = () => {
             window.location.href = "/";
             return null;
         }
-        console.log(data);
+        let _temp = [{
+            title: "روابط التحميل",
+            data: data.download,
+            download: true,
+        },
+            {
+                title: "جودة خارقة",
+                data: data.stream.filter((e: { id: string | string[] }) => e.id.includes("power")),
+                download: false,
+            },
+            {
+                title: "جودة مرتفعة",
+                data: data.stream.filter((e: { id: string | string[] }) => !e.id.includes("_")),
+                download: false,
+            },
+            {
+                title: "جودة متوسطه",
+                data: data.stream.filter((e: { id: string | string[] }) => e.id.includes("middle")),
+                download: false,
+            },
+            {
+                title: "جودة ضعيفه",
+                data: data.stream.filter((e: { id: string | string[] }) => (!e.id.includes("power") && e.id.includes("_") && !e.id.includes("middle"))),
+                download: false,
+            }
+        ]
+        let _tabs = []
+        for (let i of _temp){
+            if (i.data.length > 0){
+                _tabs.push(i)
+            }
+        }
+
+        setTabs(_tabs)
+        console.log(_tabs)
         setAnimeInfo(data);
         setEpisodes(data.episodes);
         return data;
@@ -80,16 +117,7 @@ const Episode: NextPage = () => {
                 </div>
                 <div className={styles.top}>
                     <div className={styles.watchPanel}>
-                        <div className={styles.watchPanel__links}>
-                            {info?.stream.map((stream: any[any], index: any) => {
-                                    return (
-                                        <div key={index} className={styles.watchPanel__link + " " + (currentServerIndex == index ? styles.activeServer : "")}>
-                                            <div onClick={()=> {setCurrentServerIndex(index)}}>{stream.name}</div>
-                                        </div>
-                                    )
-                                }
-                            )}
-                        </div>
+
                         <iframe src={currentServerLink} frameBorder="0" allowFullScreen={true} sandbox={"allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"}></iframe>
                         <div className={styles.episode_nav}>
                             <div className={info?.next == null ? styles.hidden : ""} onClick={() => {
@@ -102,15 +130,25 @@ const Episode: NextPage = () => {
                     </div>
                     <div className={styles.links_container}>
                         <div className={styles.links_container_header}>
-                            <div className={styles.active}>روابط التحميل</div>
+                            {tabs && tabs?.map((t, index) => {
+                                return (
+                                    <div key={index} className={tab == index ? styles.active : ""} onClick={() => {setTab(index)}}>{t.title}</div>
+                                )})}
                         </div>
                         <div className={styles.links_container_body}>
                             <div id={"download"} className={styles.links}>
                                 {/*@ts-ignore*/}
-                                {info && info.download.map((stream, index) => {
-                                    return (
-                                        <a key={index} target={"_blank"} href={stream.url} className={styles.link} rel="noreferrer">{stream.name}</a>
-                                    )})
+                                {info && tabs[tab].data.map((stream, index) => {
+                                        if (!(tabs) || tabs[tab].download) {
+                                            return (
+                                                <a key={index} target={"_blank"} href={stream.url} className={styles.link} rel="noreferrer">{stream.name}</a>
+                                            )
+                                        }else{
+                                            return (
+                                                <a key={index} onClick={()=> {setCurrentServerIndex(index)}} className={styles.link} rel="noreferrer">{stream.name}</a>
+                                            )
+                                        }
+                                    })
                                 }
                             </div>
                         </div>
